@@ -1,10 +1,5 @@
 package config
 
-import (
-	"log"
-	"os"
-)
-
 type Config struct {
 	DatabaseURL string
 }
@@ -14,12 +9,7 @@ const (
 )
 
 func LoadConfig() *Config {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf(ErrorLoadEnv, err)
-	}
-
 	return &Config{
-		DatabaseURL: os.Getenv("DATABASE_URL"),
+		DatabaseURL: "host=localhost port=5430 user=postgres password=sql091233 dbname=Todolist sslmode=disable",
 	}
 }
